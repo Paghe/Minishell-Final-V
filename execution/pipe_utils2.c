@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:28:59 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/18 13:29:33 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/19 15:56:53 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	print_string(t_cmds **red, char *str)
 	free(tmp2);
 }
 
-int	execute_full_command(\
+int	exec_full(\
 	t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens)
 {
 	if (execve((*red)->cmds[0], (*red)->cmds, *envp) == -1)

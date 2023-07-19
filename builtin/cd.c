@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:20:51 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/18 16:52:45 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/06 18:53:55 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ int	cd_home(char **env, t_cmds *cmds)
 
 	dir = NULL;
 	i = 0;
-	if ((!ft_strncmp(cmds[0].cmds[i], "cd", 2) && !cmds[0].cmds[i + 1]) || \
-			(cmds[0].cmds[i + 1] && !ft_strncmp(cmds[0].cmds[i + 1], "~", 2)))
+	if (!ft_strncmp(cmds[0].cmds[i], "cd", 2) && !cmds[0].cmds[i + 1])
 	{
 		dir = go_home(env);
 		if (chdir(dir) != 0)
@@ -109,8 +108,6 @@ int	change_dir(char **env, t_cmds *cmds)
 	if (!ft_strncmp(cmds->cmds[0], "cd", 3))
 	{
 		no_quote(cmds);
-		if (cd_old(env, cmds))
-			return (1);
 		if (pwd_goes_void(env, cmds))
 			return (1);
 		if (cd_user(env, cmds))

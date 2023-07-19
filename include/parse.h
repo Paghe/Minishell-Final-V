@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 19:17:49 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/19 13:14:45 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/19 15:57:32 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,15 @@ int		not_correct_pos(t_token *current);
 int		get_grammar(t_tokens *tokens);
 int		is_word(t_token *token);
 void	parse_tokens(t_tokens *tokens, t_cmds **cmds, char **envp);
+void	create_commands(t_cmds **cmds, t_token *current, int i, int j);
+t_token	*handle_input(t_token *current, t_cmds **cmds, int i);
+t_token	*handle_output(t_token *current, t_cmds **cmds, int i);
+t_token	*handle_pipes(t_token *current, t_cmds **cmds, int *i, int *j);
 int		is_input_redirect(t_token *token);
 int		is_output_redirect(t_token *token);
 int		is_the_word(t_token *token);
-int		count_commands(t_tokens	*tokens);
-t_cmds	**init_list_commands(t_tokens *tokens);
+t_cmds	**init_list_commands(t_tokens *tokens, t_cmds **cmds);
+int		count_commands(t_tokens *tokens);
 void	free_parse(t_cmds **cmds);
 void	input_redirection(t_cmds **red, char **envp);
 void	output_redirection_renew(t_cmds **red, char **envp);
@@ -86,6 +90,8 @@ int		if_is_builtin(char *cmd);
 int		is_echo_newline(char *current);
 int		only_echo(t_cmds **cmds);
 int		built_in(t_cmds *cmds, char ***env, char ***shell_envp, int *exit);
+int		if_is_exit(t_cmds *cmds, int flag, int *exit);
+int		exit_format(int i, t_cmds *cmds, int flag, int *exit);
 int		echo(t_cmds *cmds);
 int		change_dir(char **env, t_cmds *cmds);
 int		cd_old(char **env, t_cmds *cmds);
@@ -102,6 +108,7 @@ int		count_env_vars(char **envp);
 void	export(char **cmds, char ***env, char ***shell_env);
 char	*ft_strdup2(const char *s1, int stop);
 void	here_doc(t_token *token, t_cmds *cmds);
+int		is_inside_env(char	**envp, char *var_name, int count);
 char	*get_next_var(char *var, char **envp);
 char	*remove_char_from_word(char *str, char c);
 char	*put_dollar_back(char *str);
@@ -118,7 +125,7 @@ void	close_pipes_and_fds(t_cmds **red);
 void	open_files_in_pipes(t_cmds **red);
 void	dup_pipes(t_cmds **red, t_cmds **all);
 void	print_string(t_cmds **red, char *str);
-int		execute_full_command(\
+int		exec_full(\
 			t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens);
 int		execution(t_array_cmds cmds, \
 			char ***envp, char ***shell_env, t_tokens *tokens);

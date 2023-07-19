@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_redirection.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 19:36:41 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/15 19:32:09 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/19 15:00:02 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	input_redirection(t_cmds **red, char **envp)
 
 	fd = open((*red)->data.input, O_RDONLY);
 	if (fd == -1)
-		return ;
+		return (perror((*red)->data.input));
 	pid = fork();
 	if (pid == 0)
 	{

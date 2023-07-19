@@ -1,4 +1,4 @@
-FLAGS = -Wall -Wextra -Werror -g#-I $(shell brew --prefix readline)/include
+FLAGS = -Wall -Wextra -Werror #-I $(shell brew --prefix readline)/include
 #ifdef DEBUG 
 #FLAGS += -fsanitize=leak
 #else
@@ -22,6 +22,8 @@ SRC = main.c \
 	builtin/utils_builtin.c \
 	builtin/built.c \
 	builtin/cd_utils_two.c \
+	builtin/unset_utils.c \
+	parse/utils_parse_two.c \
 	parse/parse.c	\
 	parse/grammar.c	\
 	parse/utils_parse.c \
@@ -36,7 +38,6 @@ SRC = main.c \
 	parse/environment_vars.c \
 	builtin/unset.c \
 	builtin/export.c \
-	execution/execution.c \
 	parse/env_vars_check.c \
 	execution/pipe_utils.c \
 	execution/pipe_utils2.c \
@@ -52,7 +53,7 @@ OBJ = $(SRC:.c=.o)
 LIBFT = ./libft/libft.a
 GNL = ./gnl/libgnl.a
 
-LINKFLAGS = -lreadline #-g -L/Users/crepou/Documents/LeakSanitizer  #-fsanitize=leak#-L/Users/crepou/Documents/LeakSanitizer -llsan -lc++ #-L$(shell brew --prefix readline)/lib
+LINKFLAGS = -lreadline -g  -L/Users/apaghera/Documents/LeakSanitizer -llsan -lc++ #-L$(shell brew --prefix readline)/lib
 #ifdef DEBUG
 #LINKFLAGS += -g -fsanitize=leak
 #else

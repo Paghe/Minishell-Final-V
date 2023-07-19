@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:17:39 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/19 13:18:16 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/19 15:46:18 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	execute_each_cmd(t_tokens *tokens, char ***envp, char ***shell_env)
 	t_cmds	**cmds;
 	int		exit;
 
-	cmds = init_list_commands(tokens);
+	cmds = NULL;
+	cmds = init_list_commands(tokens, cmds);
 	parse_tokens(tokens, cmds, *envp);
 	replace_env_vars(cmds, *shell_env);
 	block_signals();
