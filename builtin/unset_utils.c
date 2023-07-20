@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 20:31:21 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/19 14:17:00 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/20 00:01:32 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,8 @@ char	*get_env_var(char *var_name, char **envp)
 
 int	unset(char ***envp, char *var_name)
 {
-	int	i;
 	int	sucess;
 
-	i = 0;
 	sucess = 0;
 	if (!var_name)
 		return (sucess);

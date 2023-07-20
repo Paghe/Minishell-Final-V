@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 19:35:49 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/19 18:17:00 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/20 02:51:05 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	get_input(char **input)
 		(*input) = trimmed;
 	}
 	if (!(*input))
-		return (1);
+		return (free(*input), 1);
 	return (0);
 }
 
@@ -72,6 +72,7 @@ int	execute(char **envp)
 		parsing(&lexer, ft_strdup(input));
 		free(input);
 		check_grammar(lexer.tokens, &envp, &shell_env, &exit);
+		destroy_tokens(lexer.tokens);
 		if (exit)
 			break ;
 	}

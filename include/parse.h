@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 19:17:49 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/19 15:57:32 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/20 02:48:25 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_token	*handle_pipes(t_token *current, t_cmds **cmds, int *i, int *j);
 int		is_input_redirect(t_token *token);
 int		is_output_redirect(t_token *token);
 int		is_the_word(t_token *token);
-t_cmds	**init_list_commands(t_tokens *tokens, t_cmds **cmds);
+t_cmds	**init_list_commands(t_tokens *tokens);
 int		count_commands(t_tokens *tokens);
 void	free_parse(t_cmds **cmds);
 void	input_redirection(t_cmds **red, char **envp);
@@ -79,7 +79,7 @@ int		pipe_proccess(t_array_cmds cmds, char ***envp, \
 			char ***shell_env, t_tokens *tokens);
 int		is_env_var(char *word, char	**var_name, char **value, char **env);
 char	*get_env_var(char *var_name, char **envp);
-void	replace_env_vars(t_cmds **cmds, char **envp);
+void	replace_env_vars(t_cmds ***cmds, char **envp);
 int		count_dollars(char *word);
 char	**escape_quotes_cmds(char **cmds);
 int		unset(char ***envp, char *var_name);
@@ -137,7 +137,7 @@ char	*put_dollar_back(char *str);
 char	*next_dollar(char *str);
 void	replace_environ_var(t_cmds **cmds, char **envp, int i, int j);
 char	*replace_command(char *cmd, char *arg2, char **envp, int sum);
-char	*replace_not_env_var(char *variable, char *final);
+char	*replace_not_env_var(char *variable, char **final);
 char	*create_dollar_str(char *final, char *cmds, int dollars, char *new_val);
 char	*replace_var(char *var);
 char	*put_dollar_back(char *str);
@@ -166,5 +166,4 @@ int		replace_cmds(t_cmds **cmds, int i);
 int		free_the_environ(char **env, int last_pid);
 char	**expanded_commands(t_cmds *cmds, int *k);
 char	**copy_env(char **envp);
-
 #endif
