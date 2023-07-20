@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:44:30 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/19 14:16:14 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:58:28 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	error_message_export(char *tmp, char **cmds)
 	ft_putstr_fd("minishell: export: `", 2);
 	ft_putstr_fd(tmp, 2);
 	free(tmp);
-	ft_putstr_fd(": not a valid identifier", 2);
+	ft_putstr_fd("': not a valid identifier\n", 2);
+	g_exit_c = 1;
 }
 
 void	export(char **cmds, char ***env, char ***shell_env)

@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:16:01 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/20 02:49:11 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/20 14:21:56 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	execute_cmds(\
 	int				last_pid;
 	int				prev_pid;
 	t_array_cmds	comm;
+	int				fd;
 
 	i = -1;
 	last_pid = 0;
@@ -101,6 +102,13 @@ int	execute_cmds(\
 	comm.cmds = cmds;
 	while (cmds[++i])
 	{
+		if (cmds[i]->data.input)
+		{
+			fd = open(cmds[i]->data.input, O_RDONLY);
+			if (fd < 0)
+				perror(cmds[i]->data.input);
+			close(fd);
+		}
 		if (cmds[i]->cmds[0])
 		{
 			replace_cmds(cmds, i);

@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 23:22:34 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/19 23:23:00 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/20 14:19:56 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,21 @@ char	*replace_not_env_var(char *variable, char **final)
 	char	*tmp;
 	char	*tmp2;
 
+	tmp = NULL;
+	tmp2 = NULL;
+	//variable = remove_char_from_word(variable, '\"');
+	//tmp = put_dollar_back(variable);
+	//variable = next_dollar(tmp);
+	//tmp2 = *final;
+	//*final = ft_strjoin(*final, variable);
+	//free(variable);
+	//free(tmp2);
+	tmp = variable;
 	variable = remove_char_from_word(variable, '\"');
 	tmp = put_dollar_back(variable);
-	free(variable);
+	//free(variable);
 	variable = next_dollar(tmp);
+	free(tmp);
 	tmp2 = *final;
 	*final = ft_strjoin(*final, variable);
 	free(variable);
@@ -49,6 +60,8 @@ char	*replace_command(char *cmd, char *arg2, char **envp, int sum)
 	char	*final;
 	int		k;
 
+	final = NULL;
+	variable = NULL;
 	while (sum > -1)
 	{
 		k = 0;
@@ -79,12 +92,8 @@ void	replace_environ_var(t_cmds **cmds, char **envp, int i, int j)
 	arg2 = ft_strdup(cmds[i]->cmds[j]);
 	if (j > 0 || cmds[i]->cmds[j][0] == '$')
 	{
-		if (*arg2 == '?')
-			final = replace_command(\
-				cmds[i]->cmds[j], arg2 + 1, envp, ft_strlen(arg2));
-		else
-			final = replace_command(\
-				cmds[i]->cmds[j], arg2, envp, ft_strlen(arg2));
+		final = replace_command(\
+			cmds[i]->cmds[j], arg2, envp, ft_strlen(arg2));
 		free(cmds[i]->cmds[j]);
 		cmds[i]->cmds[j] = final;
 	}

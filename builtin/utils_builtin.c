@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 17:48:15 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/16 20:29:46 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:14:14 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	go_to_user(t_cmds *cmds, char *dir, char **env)
 		if (chdir("..") != 0)
 		{
 			perror(dir);
-			return (0);
+			return (free(dir), 0);
 		}
 		free(dir);
 		dir = getcwd(NULL, 0);

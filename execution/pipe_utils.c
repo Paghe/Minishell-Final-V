@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:22:24 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/19 13:10:09 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/20 12:23:03 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	free_everything(
 	free_env(*envp);
 	free_env(*shell_env);
 	free_parse(red);
+	free(red);
 	destroy_tokens(tokens);
 }
 
@@ -64,7 +65,8 @@ int	wait_process(int last_pid, int last)
 	}
 	if (last != -2)
 	{
-		g_exit_c = e_code;
+		if (g_exit_c != 1 && g_exit_c != 126)
+			g_exit_c = e_code;
 		if (e_code == 255)
 			g_exit_c = 127;
 	}
