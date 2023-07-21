@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:04:10 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/12 19:14:46 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 18:25:50 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	cntr_handler(int signum)
 	slash_handler(signum);
 	if (signum == SIGINT)
 		write(1, "\n", 1);
-	//rl_on_new_line();
-	//rl_replace_line("", 0);
-	//rl_redisplay();
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 }
 
 void	slash_handler(int signum)
@@ -45,7 +45,7 @@ void	slash_handler(int signum)
 void	signal_on_block(int signum)
 {
 	(void)signum;
-	//rl_on_new_line();
+	rl_on_new_line();
 }
 
 void	block_signals(void)

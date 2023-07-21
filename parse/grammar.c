@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grammar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaghera <apaghera@student.42heilbronn.de> +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 18:34:03 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/04 17:37:16 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:21:14 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	is_pipe(t_token *token)
 	current = token;
 	if (current->type == PIPE)
 	{
-		if (current->next->type == WORD || is_symbol(current))
+		if (current->next->type == WORD || is_symbol(current) || \
+			is_symbol(current->next))
 			return (1);
 	}
 	if (is_word(current) || is_symbol(current))

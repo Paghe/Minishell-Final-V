@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"iterator": "c",
-		"control.h": "c"
+		"control.h": "c",
+		"__locale": "c"
 	}
 }
