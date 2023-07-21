@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 19:17:49 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/21 18:18:05 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 19:59:06 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,4 +171,5 @@ char	**copy_env(char **envp);
 void	free_list_cmds(t_cmds **red, char ***envp, char ***shell_env);
 int		count_builtins(t_cmds **red);
 void	check_if_file_exists(t_cmds *cmds);
+void	free_val(char *new_val);
 #endif

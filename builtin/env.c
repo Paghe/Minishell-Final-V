@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaghera <apaghera@student.42heilbronn.de> +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 18:55:49 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/03 19:44:05 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:01:42 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	get_env(t_cmds *cmds, char **env)
 	int	i;
 
 	i = 0;
-	if (!ft_strncmp(cmds[0].cmds[0], "env", 4))
+	if (!ft_strncmp(cmds[0].cmds[0], "env", 4) || \
+		(!ft_strncmp(cmds[0].cmds[0], "export", 7) && !cmds[0].cmds[1]))
 	{
 		while (env[i])
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_replacement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 23:22:34 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/21 17:06:17 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 19:41:35 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ char	*replace_command(char *cmd, char *arg2, char **envp, int sum)
 	char	*final;
 	int		k;
 
+	final = NULL;
+	new_val = NULL;
 	while (sum > -1)
 	{
-		k = 0;
 		variable = next_var(arg2, arg2, &k);
 		dollars = count_dollars(arg2);
 		if (k == -1)
@@ -68,8 +69,7 @@ char	*replace_command(char *cmd, char *arg2, char **envp, int sum)
 			final = replace_not_env_var(variable, &final);
 		free(variable);
 	}
-	if (new_val)
-		free(new_val);
+	free_val(new_val);
 	return (final);
 }
 

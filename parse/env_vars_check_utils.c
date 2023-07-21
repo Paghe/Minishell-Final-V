@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_vars_check_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 02:48:44 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/19 13:10:09 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 19:21:54 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*next_var(char *str, char	*real_str, int *i)
 	char	quote_type;
 	char	*new_var;
 
+	*i = 0;
 	if (real_str && *real_str && (*real_str \
 		== '\"' || *real_str == '\'' || *real_str == '$'))
 	{

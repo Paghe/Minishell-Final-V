@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:17:39 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/21 17:16:21 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 19:41:59 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,10 @@ void	check_if_file_exists(t_cmds *cmds)
 			perror(cmds->data.input);
 		close(fd);
 	}
+}
+
+void	free_val(char *new_val)
+{
+	if (new_val)
+		free(new_val);
 }

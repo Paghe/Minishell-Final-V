@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 17:04:46 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/20 14:11:12 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 20:05:43 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	pwd_goes_void(char **env, t_cmds *cmds)
 	free(dir);
 	dir = ft_strdup(cmds[0].cmds[1]);
 	if (chdir(dir) != 0)
-		return (free(dir), perror(dir), 0);
+		return (perror(dir), free(dir), 0);
 	else
 	{
 		change_old(env);

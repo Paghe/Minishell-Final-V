@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment_vars.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 13:59:13 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/19 13:21:28 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 19:48:50 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char	**create_final_str(char *str, char **final, int *count, int *end)
 	int		i;
 
 	if (!str)
+		return (NULL);
+	if (!ft_strncmp(str, "=", 2))
 		return (NULL);
 	*final = NULL;
 	if (*str && *str == ' ')
