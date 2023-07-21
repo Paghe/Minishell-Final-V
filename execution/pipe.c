@@ -25,6 +25,7 @@ int	execution(t_array_cmds cmds, \
 	if (cmds.cmds[cmds.current]->cmds[0] && ft_strncmp(\
 		cmds.cmds[cmds.current]->cmds[0], "./", 2) == 0)
 	{
+		//change
 		ec = exec_full(&cmds.cmds[cmds.current], envp, shell_env, tokens);
 		if (ec != 0)
 			return (ec);
@@ -35,7 +36,8 @@ int	execution(t_array_cmds cmds, \
 			cmds.cmds[cmds.current]->cmds, *envp) == -1)
 		{
 			print_string(&cmds.cmds[cmds.current], ": command not found");
-			free_everything(&cmds.cmds[cmds.current], envp, shell_env, tokens);
+			//change
+			free_everything(cmds.cmds, envp, shell_env, tokens);
 			return (-1);
 		}
 	}
@@ -58,6 +60,7 @@ int	run_if_builtin(t_cmds **red, char ***envp, char ***shell_env)
 	return (exit_st);
 }
 
+//change
 int	run_if_more_builtins(\
 	t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens)
 {
@@ -65,6 +68,7 @@ int	run_if_more_builtins(\
 
 	open_files_in_pipes(red);
 	built_in(*red, envp, shell_env, &exit_st);
+	//change
 	free_everything(red, envp, shell_env, tokens);
 	exit(exit_st);
 }
@@ -86,6 +90,7 @@ int	pipe_proccess(t_array_cmds cmds, char ***envp, \
 	{
 		if (cmds.cmds[cmds.current]->data.exist && \
 				if_is_builtin(cmds.cmds[cmds.current]->cmds[0]))
+			//change
 			exit(run_if_more_builtins(&cmds.cmds[cmds.current], \
 					envp, shell_env, tokens));
 		else

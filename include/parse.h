@@ -117,6 +117,7 @@ void	free_after_split(char **str);
 int		wait_process(int last_pid, int last);
 int		init_pipes(t_cmds **cmds, int index);
 void	close_all(t_cmds **cmds);
+//change
 void	free_everything(\
 		t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens);
 int		wait_process(int last_pid, int last);
@@ -125,11 +126,13 @@ void	close_pipes_and_fds(t_cmds **red);
 void	open_files_in_pipes(t_cmds **red);
 void	dup_pipes(t_cmds **red, t_cmds **all);
 void	print_string(t_cmds **red, char *str);
+//change
 int		exec_full(\
 			t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens);
 int		execution(t_array_cmds cmds, \
 			char ***envp, char ***shell_env, t_tokens *tokens);
 int		run_if_builtin(t_cmds **red, char ***envp, char ***shell_env);
+//change
 int		run_if_more_builtins(\
 			t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens);
 char	*replace_var(char *var);

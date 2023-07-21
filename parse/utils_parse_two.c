@@ -13,6 +13,7 @@
 #include "../include/control.h"
 #include "../include/parse.h"
 
+//change
 void	free_parse(t_cmds **cmds)
 {
 	int	i;
@@ -23,6 +24,9 @@ void	free_parse(t_cmds **cmds)
 	while (cmds[i])
 	{
 		j = 0;
+		//change
+		if (cmds[i]->data.env)
+			free(cmds[i]->data.env);
 		while (cmds[i]->cmds && cmds[i]->cmds[j])
 		{
 			if (cmds[i]->data.exist)

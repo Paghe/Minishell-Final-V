@@ -39,13 +39,15 @@ void	close_all(t_cmds **cmds)
 	}
 }
 
+//change
 void	free_everything(
 		t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens)
 {
 	free_env(*envp);
 	free_env(*shell_env);
 	free_parse(red);
-	free(red);
+	//change
+	// free(red);
 	destroy_tokens(tokens);
 }
 

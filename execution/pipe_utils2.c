@@ -56,6 +56,7 @@ void	print_string(t_cmds **red, char *str)
 	free(tmp2);
 }
 
+//change
 int	exec_full(\
 	t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens)
 {
@@ -69,9 +70,11 @@ int	exec_full(\
 		if (!access((*red)->cmds[0] + 2, F_OK) \
 			&& access((*red)->cmds[0] + 2, X_OK) != 0)
 		{
+			//change
 			free_everything(red, envp, shell_env, tokens);
 			return (126);
 		}
+		//change
 		free_everything(red, envp, shell_env, tokens);
 		return (-1);
 	}
