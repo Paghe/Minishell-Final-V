@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:22:24 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/20 12:23:03 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 17:03:24 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,13 @@ void	close_all(t_cmds **cmds)
 	}
 }
 
-//change
 void	free_everything(
 		t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens)
 {
 	free_env(*envp);
 	free_env(*shell_env);
 	free_parse(red);
-	//change
-	// free(red);
+	free(red);
 	destroy_tokens(tokens);
 }
 

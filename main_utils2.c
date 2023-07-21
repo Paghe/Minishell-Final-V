@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:17:39 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/20 13:57:21 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 17:16:21 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,24 @@ int	execute_each_cmd(t_tokens *tokens, char ***envp, char ***shell_env)
 	free_parse(cmds);
 	free(cmds);
 	return (exit);
+}
+
+void	free_list_cmds(t_cmds **red, char ***envp, char ***shell_env)
+{
+	free_env(*envp);
+	free_env(*shell_env);
+	free_parse(red);
+}
+
+void	check_if_file_exists(t_cmds *cmds)
+{
+	int	fd;
+
+	if (cmds->data.input)
+	{
+		fd = open(cmds->data.input, O_RDONLY);
+		if (fd < 0)
+			perror(cmds->data.input);
+		close(fd);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 19:17:49 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/20 02:48:25 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 17:16:08 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 	int			is_updated;
 	int			out_redir_first;
 	int			exist;
+	int			index;
 }	t_data;
 
 typedef struct s_cmds
@@ -89,7 +90,7 @@ void	free_env(char **envp);
 int		if_is_builtin(char *cmd);
 int		is_echo_newline(char *current);
 int		only_echo(t_cmds **cmds);
-int		built_in(t_cmds *cmds, char ***env, char ***shell_envp, int *exit);
+int		built_in(t_cmds **cmds, char ***env, char ***shell_envp, int *exit);
 int		if_is_exit(t_cmds *cmds, int flag, int *exit);
 int		exit_format(int i, t_cmds *cmds, int flag, int *exit);
 int		echo(t_cmds *cmds);
@@ -117,7 +118,6 @@ void	free_after_split(char **str);
 int		wait_process(int last_pid, int last);
 int		init_pipes(t_cmds **cmds, int index);
 void	close_all(t_cmds **cmds);
-//change
 void	free_everything(\
 		t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens);
 int		wait_process(int last_pid, int last);
@@ -126,13 +126,11 @@ void	close_pipes_and_fds(t_cmds **red);
 void	open_files_in_pipes(t_cmds **red);
 void	dup_pipes(t_cmds **red, t_cmds **all);
 void	print_string(t_cmds **red, char *str);
-//change
 int		exec_full(\
 			t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens);
 int		execution(t_array_cmds cmds, \
 			char ***envp, char ***shell_env, t_tokens *tokens);
 int		run_if_builtin(t_cmds **red, char ***envp, char ***shell_env);
-//change
 int		run_if_more_builtins(\
 			t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens);
 char	*replace_var(char *var);
@@ -169,4 +167,7 @@ int		replace_cmds(t_cmds **cmds, int i);
 int		free_the_environ(char **env, int last_pid);
 char	**expanded_commands(t_cmds *cmds, int *k);
 char	**copy_env(char **envp);
+void	free_list_cmds(t_cmds **red, char ***envp, char ***shell_env);
+int		count_builtins(t_cmds **red);
+void	check_if_file_exists(t_cmds *cmds);
 #endif

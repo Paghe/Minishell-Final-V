@@ -2,7 +2,7 @@ FLAGS = -Wall -Wextra -Werror #-I $(shell brew --prefix readline)/include
 #ifdef DEBUG 
 #FLAGS += -fsanitize=leak
 #else
-FLAGS += -g -fsanitize=address
+#FLAGS += -g -fsanitize=address
 #endif
 
 NAME = minishell
@@ -64,12 +64,12 @@ all:
 	$(MAKE) $(NAME) -j
 
 %.o: %.c
-	gcc $(FLAGS) -c $^ -o $@
+	cc $(FLAGS) -c $^ -o $@
 
 $(NAME): $(OBJ) include/lexer.h
 	make -C libft
 	make -C gnl
-	gcc  $(OBJ) $(LIBFT) $(GNL) -o $(NAME) $(LINKFLAGS) $(FLAGS) 
+	cc  $(OBJ) $(LIBFT) $(GNL) -o $(NAME) $(LINKFLAGS) $(FLAGS) 
 clean:
 	rm -f $(OBJ)
 	make clean -C libft

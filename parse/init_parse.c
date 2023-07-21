@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:34:12 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/20 11:40:14 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 16:18:19 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	init_data(t_cmds **cmds, t_token **current)
 	(*cmds)->data.is_updated = 0;
 	(*cmds)->data.out_redir_first = 0;
 	(*cmds)->data.exist = 0;
+	(*cmds)->data.index = 0;
 	if ((*current))
 		(*current) = (*current)->next;
 }
@@ -135,6 +136,7 @@ t_cmds	**init_list_commands(t_tokens *tokens)
 		}
 		cmds[i]->cmds = malloc(sizeof(char *) * (len + 1));
 		make_all_null(&cmds[i], len, &current);
+		cmds[i]->data.index = i;
 	}
 	cmds[total_commands] = NULL;
 	return (cmds);

@@ -6,14 +6,13 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 18:01:16 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/19 23:50:03 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 17:05:36 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/control.h"
 #include "../include/parse.h"
 
-//change
 void	free_parse(t_cmds **cmds)
 {
 	int	i;
@@ -24,7 +23,6 @@ void	free_parse(t_cmds **cmds)
 	while (cmds[i])
 	{
 		j = 0;
-		//change
 		if (cmds[i]->data.env)
 			free(cmds[i]->data.env);
 		while (cmds[i]->cmds && cmds[i]->cmds[j])

@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 19:15:04 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/20 11:59:22 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 17:09:13 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,30 +92,30 @@ int	exit_format(int i, t_cmds *cmds, int flag, int *exit)
 	return (flag = 1);
 }
 
-int	built_in(t_cmds *cmds, char ***env, char ***shell_envp, int *exit)
+int	built_in(t_cmds **cmds, char ***env, char ***shell_envp, int *exit)
 {
 	int		flag;
 
 	flag = 0;
-	flag = if_is_exit(cmds, flag, exit);
-	if (ft_memcmp(cmds->cmds[0], "export", 7) == 0)
+	flag = if_is_exit(*cmds, flag, exit);
+	if (ft_memcmp((*cmds)->cmds[0], "export", 7) == 0)
 	{
-		export(cmds->cmds, env, shell_envp);
+		export((*cmds)->cmds, env, shell_envp);
 		flag = 1;
 	}
-	if (ft_memcmp(cmds->cmds[0], "unset", 6) == 0)
+	if (ft_memcmp((*cmds)->cmds[0], "unset", 6) == 0)
 	{
-		unset(env, cmds->cmds[1]);
-		unset(shell_envp, cmds->cmds[1]);
+		unset(env, (*cmds)->cmds[1]);
+		unset(shell_envp, (*cmds)->cmds[1]);
 		flag = 1;
 	}
-	if (echo(cmds))
+	if (echo(*cmds))
 		flag = 1;
-	if (change_dir(*shell_envp, cmds))
+	if (change_dir(*shell_envp, *cmds))
 		flag = 1;
-	if (get_env(cmds, *shell_envp))
+	if (get_env(*cmds, *shell_envp))
 		flag = 1;
-	if (build_pwd(cmds))
+	if (build_pwd(*cmds))
 		flag = 1;
 	return (flag);
 }
