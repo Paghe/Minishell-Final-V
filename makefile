@@ -53,7 +53,7 @@ OBJ = $(SRC:.c=.o)
 LIBFT = ./libft/libft.a
 GNL = ./gnl/libgnl.a
 
-LINKFLAGS = -lreadline -g #-L$(shell brew --prefix readline)/lib
+LINKFLAGS = -lreadline -g -L/Users/apaghera/Documents/LeakSanitizer -llsan -lc++ #-L$(shell brew --prefix readline)/lib
 #ifdef DEBUG
 #LINKFLAGS += -g -fsanitize=leak
 #else

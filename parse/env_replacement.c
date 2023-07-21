@@ -6,7 +6,7 @@
 /*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 23:22:34 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/21 19:41:35 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/21 22:52:24 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*create_dollar_str(char *final, char *cmds, int dollars, char *new_val)
 	dollar_str = ft_strdup2(cmds, dollars - 1);
 	tmp = ft_strjoin(dollar_str, new_val);
 	final = ft_strjoin(final, tmp);
+	if (tmp)
+		free(tmp);
 	free(dollar_str);
 	return (final);
 }
