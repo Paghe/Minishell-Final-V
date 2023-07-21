@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 19:17:49 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/21 17:16:08 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 18:18:05 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_array_cmds
 {
 	t_cmds	**cmds;
 	int		current;
+	char	***envp;
 }	t_array_cmds;
 
 char	*escape_quote(char	*cmds);
@@ -132,7 +133,7 @@ int		execution(t_array_cmds cmds, \
 			char ***envp, char ***shell_env, t_tokens *tokens);
 int		run_if_builtin(t_cmds **red, char ***envp, char ***shell_env);
 int		run_if_more_builtins(\
-			t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens);
+			t_array_cmds red, char ***shell_env, t_tokens *tokens);
 char	*replace_var(char *var);
 char	*put_dollar_back(char *str);
 char	*next_dollar(char *str);

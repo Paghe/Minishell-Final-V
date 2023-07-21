@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 21:49:01 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/21 17:05:00 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 18:17:58 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,17 @@ int	count_builtins(t_cmds **red)
 }
 
 int	run_if_more_builtins(\
-	t_cmds **red, char ***envp, char ***shell_env, t_tokens *tokens)
+	t_array_cmds red, char ***shell_env, t_tokens *tokens)
 {
 	int	exit_st;
 	int	index;
 
-	open_files_in_pipes(red);
-	index = (*red)->data.index;
-	built_in(red, envp, shell_env, &exit_st);
-	free_list_cmds(red, envp, shell_env);
-	if (red)
-		free(red);
+	open_files_in_pipes(red.cmds);
+	index = (*(red.cmds))->data.index;
+	built_in(&(red.cmds)[(red.current)], (red.envp), shell_env, &exit_st);
+	free_list_cmds((red.cmds), (red.envp), shell_env);
+	if ((red.cmds))
+		free((red.cmds));
 	destroy_tokens(tokens);
 	exit(exit_st);
 }
@@ -107,8 +107,7 @@ int	pipe_proccess(t_array_cmds cmds, char ***envp, \
 	{
 		if (cmds.cmds[cmds.current]->data.exist && \
 				if_is_builtin(cmds.cmds[cmds.current]->cmds[0]))
-			exit(run_if_more_builtins(cmds.cmds, \
-					envp, shell_env, tokens));
+			exit(run_if_more_builtins(cmds, shell_env, tokens));
 		else
 		{
 			exit_code = execution(cmds, envp, shell_env, tokens);

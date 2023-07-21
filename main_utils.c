@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:16:01 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/21 17:16:47 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/21 18:11:35 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int	execute_cmds(\
 	last_pid = 0;
 	prev_pid = 0;
 	comm.cmds = cmds;
+	comm.envp = envp;
 	while (cmds[++i])
 	{
 		check_if_file_exists(cmds[i]);
