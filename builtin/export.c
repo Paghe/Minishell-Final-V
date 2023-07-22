@@ -6,7 +6,7 @@
 /*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:44:30 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/21 19:59:15 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/22 14:05:48 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	export(char **cmds, char ***env, char ***shell_env)
 		set_env_var(env, var_name, value);
 		set_env_var(shell_env, var_name, value);
 		free(var_name);
+		free(value);
 	}
 	else if (is_var == -1)
 		return ;
