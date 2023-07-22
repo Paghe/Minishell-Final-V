@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:16:01 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/22 14:35:35 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/22 15:50:23 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,9 @@ int	execute_cmds(\
 	int				prev_pid;
 	t_array_cmds	comm;
 
-	i = -1;
-	last_pid = 0;
-	prev_pid = 0;
+	init_values(&i, &last_pid, &prev_pid);
 	comm.cmds = cmds;
 	comm.envp = envp;
-	/* if (!cmds[0]->cmds[0][0])
-		return (0); */
 	while (cmds[++i])
 	{
 		check_if_file_exists(cmds[i]);

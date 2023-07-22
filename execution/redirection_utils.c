@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 22:19:33 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/19 19:09:34 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/22 15:31:16 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*create_path(char ***paths, char *cmd)
 {
 	int		i;
 	char	*cmd_path;
+	char	*tmp;
 
 	i = -1;
 	while ((*paths)[++i])
@@ -38,12 +39,14 @@ char	*create_path(char ***paths, char *cmd)
 		ft_strcpy(cmd_path, (*paths)[i]);
 		ft_strcat(cmd_path, "/");
 		ft_strcat(cmd_path, cmd);
-		if (access(cmd_path, X_OK) == 0)
+		tmp = escape_quote(cmd_path);
+		free(cmd_path);
+		if (access(tmp, X_OK) == 0)
 		{
 			free_paths((*paths));
-			return (cmd_path);
+			return (tmp);
 		}
-		free(cmd_path);
+		free(tmp);
 	}
 	free_paths((*paths));
 	if (if_is_builtin(cmd))

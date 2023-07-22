@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:28:59 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/21 17:03:38 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/22 17:29:14 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,19 @@ void	close_pipes_and_fds(t_cmds **red)
 
 void	open_files_in_pipes(t_cmds **red)
 {
-	if ((*red)->data.input || (*red)->data.output)
+	if ((*red)->data.input)
 	{
 		(*red)->data.fd_in = open((*red)->data.input, O_RDONLY);
+	}
+	if ((*red)->data.output)
+	{
 		if ((*red)->data.is_append)
 			(*red)->data.fd_out = open(\
 				(*red)->data.output, O_WRONLY | O_APPEND | O_CREAT, 0644);
 		else
 			(*red)->data.fd_out = open((*red)->data.output, O_WRONLY);
-		redirect_io((*red)->data.fd_in, (*red)->data.fd_out);
 	}
+	redirect_io((*red)->data.fd_in, (*red)->data.fd_out);
 }
 
 void	dup_pipes(t_cmds **red, t_cmds **all)

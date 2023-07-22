@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 18:55:49 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/21 20:01:42 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:45:00 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,8 @@ int	get_env(t_cmds *cmds, char **env)
 	{
 		while (env[i])
 		{
-			if (cmds[0].data.pipe_out != -1)
-			{
-				ft_putstr_fd(env[i], cmds[0].data.pipe_out);
-				ft_putstr_fd("\n", cmds[0].data.pipe_out);
-			}
-			else
-			{
-				ft_putstr_fd(env[i], 1);
-				ft_putstr_fd("\n", 1);
-			}
+			ft_putstr_fd(env[i], 1);
+			ft_putstr_fd("\n", 1);
 			i++;
 		}
 	}

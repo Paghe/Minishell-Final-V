@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:27:24 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/16 16:03:36 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:47:23 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,17 @@ void	print_echo(t_cmds **cmds, int i)
 	{
 		if (ft_strnstr(cmds[0]->cmds[i], "-n", ft_strlen(cmds[0]->cmds[i])))
 			no_quote(*cmds);
-		if (cmds[0]->data.pipe_out != -1)
-			ft_putstr_fd(cmds[0]->cmds[i], cmds[0]->data.pipe_out);
-		else
-			ft_putstr_fd(cmds[0]->cmds[i], 1);
+		ft_putstr_fd(cmds[0]->cmds[i], 1);
 		if (cmds[0]->cmds[i + 1])
-		{
-			if (cmds[0]->data.pipe_out != -1)
-				ft_putstr_fd(" ", cmds[0]->data.pipe_out);
-			else
 				ft_putstr_fd(" ", 1);
-		}
 		i++;
 	}
 }
 
-void	new_line_or_not(t_cmds **cmds, int no_newline)
+void	new_line_or_not(int no_newline)
 {
 	if (!no_newline)
-	{
-		if (cmds[0]->data.pipe_out != -1)
-			ft_putstr_fd("\n", cmds[0]->data.pipe_out);
-		else
 			ft_putstr_fd("\n", 1);
-	}
 }
 
 void	echo_with_arg(t_cmds **cmds, int no_newline, int i)
@@ -67,7 +54,7 @@ void	echo_with_arg(t_cmds **cmds, int no_newline, int i)
 			i++;
 		}
 		print_echo(cmds, i);
-		new_line_or_not(cmds, no_newline);
+		new_line_or_not(no_newline);
 	}
 }
 

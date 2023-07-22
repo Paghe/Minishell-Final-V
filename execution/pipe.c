@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 21:49:01 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/21 18:17:58 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/22 17:41:20 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,9 @@ int	run_if_more_builtins(\
 	t_array_cmds red, char ***shell_env, t_tokens *tokens)
 {
 	int	exit_st;
-	int	index;
 
-	open_files_in_pipes(red.cmds);
-	index = (*(red.cmds))->data.index;
+	dup_pipes(&(red.cmds)[(red.current)], (red.cmds));
+	open_files_in_pipes(&(red.cmds)[(red.current)]);
 	built_in(&(red.cmds)[(red.current)], (red.envp), shell_env, &exit_st);
 	free_list_cmds((red.cmds), (red.envp), shell_env);
 	if ((red.cmds))

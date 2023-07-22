@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:47:20 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/14 18:15:11 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/22 17:24:19 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	redirect_io(int input, int output)
 {
-	if (input)
+	if (input != -1)
 	{
 		dup2(input, STDIN_FILENO);
-	}	
-	if (output)
+	}
+	if (output != -1)
+	{
 		dup2(output, STDOUT_FILENO);
+	}
 }
 
 char	**escape_quotes_cmds(char **cmds)

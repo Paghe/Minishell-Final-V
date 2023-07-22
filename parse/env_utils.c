@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 01:40:10 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/19 02:21:39 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/22 15:43:21 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,18 @@ void	free_env(char **envp)
 	}
 	if (envp)
 		free(envp);
+}
+
+void	init_values(int *i, int *last_pid, int *prev_pid)
+{
+	*i = -1;
+	*last_pid = 0;
+	*prev_pid = 0;
+}
+
+void	init_export_vals(char **name, char **val, int *tmp)
+{
+	*name = NULL;
+	*val = NULL;
+	*tmp = 0;
 }
