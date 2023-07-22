@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:16:01 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/21 18:11:35 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/22 14:35:35 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ int	execute_cmds(\
 	prev_pid = 0;
 	comm.cmds = cmds;
 	comm.envp = envp;
+	/* if (!cmds[0]->cmds[0][0])
+		return (0); */
 	while (cmds[++i])
 	{
 		check_if_file_exists(cmds[i]);
