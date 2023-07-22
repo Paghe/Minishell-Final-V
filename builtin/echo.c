@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:27:24 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/22 17:47:23 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/22 19:20:12 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_echo(t_cmds **cmds, int i)
 			no_quote(*cmds);
 		ft_putstr_fd(cmds[0]->cmds[i], 1);
 		if (cmds[0]->cmds[i + 1])
-				ft_putstr_fd(" ", 1);
+			ft_putstr_fd(" ", 1);
 		i++;
 	}
 }
@@ -29,7 +29,7 @@ void	print_echo(t_cmds **cmds, int i)
 void	new_line_or_not(int no_newline)
 {
 	if (!no_newline)
-			ft_putstr_fd("\n", 1);
+		ft_putstr_fd("\n", 1);
 }
 
 void	echo_with_arg(t_cmds **cmds, int no_newline, int i)

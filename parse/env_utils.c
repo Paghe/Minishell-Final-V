@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 01:40:10 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/22 15:43:21 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/22 19:34:19 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,17 @@ void	init_values(int *i, int *last_pid, int *prev_pid)
 
 void	init_export_vals(char **name, char **val, int *tmp)
 {
-	*name = NULL;
-	*val = NULL;
+	name = NULL;
+	val = NULL;
 	*tmp = 0;
+}
+
+int	no_input(t_cmds **cmds)
+{
+	if (cmds[0]->cmds[0])
+	{
+		if (!cmds[0]->cmds[0][0])
+			return (1);
+	}
+	return (0);
 }

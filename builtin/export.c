@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:44:30 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/22 15:44:14 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/22 19:28:02 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ void	export(char **cmds, char ***env, char ***shell_env)
 	int		is_var;
 	char	*tmp;
 
-	var_name = NULL;
-	value = NULL;
-	is_var = 0;
+	init_export_vals(&var_name, &value, &is_var);
 	tmp = NULL;
 	if (cmds && cmds[1])
 		is_var = is_env_var(cmds[1], &var_name, &value, *shell_env);
