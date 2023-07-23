@@ -6,7 +6,7 @@
 /*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 13:59:13 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/21 19:48:50 by apaghera         ###   ########.fr       */
+/*   Updated: 2023/07/23 19:59:08 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	**create_final_str(char *str, char **final, int *count, int *end)
 	while (str[i])
 		i++;
 	*end = 0;
-	if (str[i - 1] == ' ')
+	if ((i > 0) && str[i - 1] == ' ')
 		*end = 1;
 	*count = 0;
 	while (after[*count])
