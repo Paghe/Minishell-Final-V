@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 19:15:04 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/22 16:18:57 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/24 16:27:04 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ char	*modify_command(char *cmd)
 int	if_is_builtin(char *cmd)
 {
 	char	*check_format;
+	char	*tmp;
 
-	check_format = modify_command(cmd);
+	tmp = ft_strdup(cmd);
+	check_format = modify_command(tmp);
+	free(tmp);
 	if (!ft_strncmp(check_format, "echo", 5))
 		return (free(check_format), 1);
 	if (!ft_memcmp(check_format, "cd", 3))
