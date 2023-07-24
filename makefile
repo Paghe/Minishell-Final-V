@@ -46,7 +46,8 @@ SRC = main.c \
 	parse/env_utils.c \
 	parse/env_vars_check_utils.c \
 	main_utils.c \
-	main_utils2.c
+	main_utils2.c \
+	parse/env_replacement_utils.c
 
 OBJ = $(SRC:.c=.o)
 

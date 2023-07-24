@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 19:17:49 by apaghera          #+#    #+#             */
-/*   Updated: 2023/07/22 19:33:47 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/24 03:30:29 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,4 +175,8 @@ void	free_val(char *new_val);
 void	init_values(int *i, int *last_pid, int *prev_pid);
 void	init_export_vals(char **name, char **val, int *tmp);
 int		no_input(t_cmds **cmds);
+char	*escape_dquote(char	*cmds);
+int		count_all_dollars(char *word);
+int		has_a_dollar(char *str);
+void	free_vars(char **variable, char **new_val);
 #endif
