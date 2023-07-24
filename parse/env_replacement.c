@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_replacement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: apaghera <apaghera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 23:22:34 by crepou            #+#    #+#             */
-/*   Updated: 2023/07/24 03:31:30 by crepou           ###   ########.fr       */
+/*   Updated: 2023/07/24 12:08:08 by apaghera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int	count_all_dollars(char *word)
 	{
 		if (word[i] == '$')
 			count++;
-		if (word[i - 1] == '$' && word[i] && word[i] != '\"')
+		if ((i > 0) && word[i - 1] == '$' && word[i] && word[i] != '\"')
 		{
 			flag_type_q = 1;
 			break ;
 		}
-		if (word[i - 1] == '$' && word[i] && word[i] == '\"')
+		if ((i > 0) && word[i - 1] == '$' && word[i] && word[i] == '\"')
 			flag_type_v = 1;
 		i++;
 	}
